@@ -1,0 +1,1449 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "SkubbsVision - OCR Claim Extraction API",
+        "description": "\n## OCR Claim Extraction API\n\nExtract structured data from receipt and claim documents using AI-powered OCR.\n\n### Authentication\nAll endpoints require an API key via the `X-API-Key` header.\n\n```\nX-API-Key: your-api-key-here\n```\n\n### Quick Start\n```bash\ncurl -X POST https://skb-claim-production.up.railway.app/api/v1/extract \\\n  -H \"X-API-Key: your-key\" \\\n  -F \"file=@receipt.jpg\"\n```\n",
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "/static/logo.png",
+            "altText": "SkubbsVision"
+        }
+    },
+    "paths": {
+        "/api/v1/health": {
+            "get": {
+                "tags": [
+                    "Health"
+                ],
+                "summary": "Health check",
+                "description": "Check if the API is running. No authentication required.",
+                "operationId": "health_check_api_v1_health_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HealthResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/extract": {
+            "post": {
+                "tags": [
+                    "Extract"
+                ],
+                "summary": "Extract fields from receipt/claim",
+                "description": "Upload a receipt or claim document to extract structured data.\n\n## Authentication\nInclude your API key in the `X-API-Key` header.\n\n## Supported Formats\n- **Images**: JPEG, PNG, GIF, WebP\n- **Documents**: PDF\n\n## Response Structure\nEach extracted field includes:\n- `value`: The extracted data (proper type: numbers as numbers, dates as strings)\n- `confidence`: Score from 0-10 indicating extraction confidence\n\n## \u26a0\ufe0f Dynamic Fields\n\n**The `fields` object is dynamic.** Additional fields beyond those documented may be returned depending on document content. Handle unknown fields gracefully.",
+                "operationId": "extract_document_api_v1_extract_post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_extract_document_api_v1_extract_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExtractResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid or missing API key",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid file type",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Extraction failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/admin/claims": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "List Claims",
+                "description": "List all claims (excludes document_url for performance).\nOrdered by submitted_at descending.",
+                "operationId": "list_claims_api_v1_admin_claims_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/ClaimListItem"
+                                    },
+                                    "type": "array",
+                                    "title": "Response List Claims Api V1 Admin Claims Get"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete All Claims",
+                "description": "Delete all claims. Use with caution.",
+                "operationId": "delete_all_claims_api_v1_admin_claims_delete",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/admin/claims/{claim_id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get Claim",
+                "description": "Get a single claim by ID (includes document_url)",
+                "operationId": "get_claim_api_v1_admin_claims__claim_id__get",
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "claim_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Claim Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClaimResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update Claim",
+                "description": "Update a claim's fields, status, and/or reviewer_notes.\nSets reviewed_at when status changes to approved/rejected.",
+                "operationId": "update_claim_api_v1_admin_claims__claim_id__patch",
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "claim_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Claim Id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ClaimUpdate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClaimResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/claims": {
+            "get": {
+                "tags": [
+                    "Claims"
+                ],
+                "summary": "List Claims",
+                "description": "List claims for the authenticated user (most recent 50)",
+                "operationId": "list_claims_api_v1_claims_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/ClaimResponse"
+                                    },
+                                    "type": "array",
+                                    "title": "Response List Claims Api V1 Claims Get"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Claims"
+                ],
+                "summary": "Submit Claim",
+                "description": "Submit a new claim",
+                "operationId": "submit_claim_api_v1_claims_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ClaimSubmission"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClaimSubmissionResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/claims/batch": {
+            "post": {
+                "tags": [
+                    "Claims"
+                ],
+                "summary": "Submit Claims Batch",
+                "description": "Submit multiple claims in a batch",
+                "operationId": "submit_claims_batch_api_v1_claims_batch_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BatchClaimSubmission"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BatchClaimResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/claims/{claim_id}": {
+            "get": {
+                "tags": [
+                    "Claims"
+                ],
+                "summary": "Get Claim",
+                "description": "Get a single claim by ID",
+                "operationId": "get_claim_api_v1_claims__claim_id__get",
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "claim_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Claim Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClaimResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "tags": [
+                    "Root"
+                ],
+                "summary": "Root",
+                "operationId": "root__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BatchClaimResponse": {
+                "properties": {
+                    "results": {
+                        "items": {
+                            "$ref": "#/components/schemas/BatchClaimResult"
+                        },
+                        "type": "array",
+                        "title": "Results"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "results"
+                ],
+                "title": "BatchClaimResponse",
+                "description": "Response model for batch claim submission"
+            },
+            "BatchClaimResult": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Id"
+                    },
+                    "success": {
+                        "type": "boolean",
+                        "title": "Success"
+                    },
+                    "error": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Error"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "success"
+                ],
+                "title": "BatchClaimResult",
+                "description": "Result for a single claim in batch submission"
+            },
+            "BatchClaimSubmission": {
+                "properties": {
+                    "claims": {
+                        "items": {
+                            "$ref": "#/components/schemas/ClaimSubmission"
+                        },
+                        "type": "array",
+                        "title": "Claims"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "claims"
+                ],
+                "title": "BatchClaimSubmission",
+                "description": "Request model for batch claim submission"
+            },
+            "Body_extract_document_api_v1_extract_post": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File",
+                        "description": "Receipt image (JPEG/PNG/GIF/WebP) or PDF"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_extract_document_api_v1_extract_post"
+            },
+            "ClaimListItem": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Id"
+                    },
+                    "fields": {
+                        "additionalProperties": true,
+                        "type": "object",
+                        "title": "Fields"
+                    },
+                    "file_type": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "File Type"
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status"
+                    },
+                    "submitted_at": {
+                        "type": "string",
+                        "title": "Submitted At"
+                    },
+                    "reviewed_at": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Reviewed At"
+                    },
+                    "reviewer_notes": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Reviewer Notes"
+                    },
+                    "user_modified_fields": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "User Modified Fields"
+                    },
+                    "ai_comment": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ai Comment"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "fields",
+                    "file_type",
+                    "status",
+                    "submitted_at",
+                    "reviewed_at",
+                    "reviewer_notes",
+                    "user_modified_fields",
+                    "ai_comment"
+                ],
+                "title": "ClaimListItem",
+                "description": "Response model for claim in list view (excludes document_url)"
+            },
+            "ClaimResponse": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Id"
+                    },
+                    "fields": {
+                        "additionalProperties": true,
+                        "type": "object",
+                        "title": "Fields"
+                    },
+                    "original_fields": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Original Fields"
+                    },
+                    "document_url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Document Url"
+                    },
+                    "file_type": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "File Type"
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status"
+                    },
+                    "submitted_at": {
+                        "type": "string",
+                        "title": "Submitted At"
+                    },
+                    "reviewed_at": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Reviewed At"
+                    },
+                    "reviewer_notes": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Reviewer Notes"
+                    },
+                    "user_modified_fields": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "User Modified Fields"
+                    },
+                    "ai_comment": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ai Comment"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "fields",
+                    "original_fields",
+                    "document_url",
+                    "file_type",
+                    "status",
+                    "submitted_at",
+                    "reviewed_at",
+                    "reviewer_notes",
+                    "user_modified_fields",
+                    "ai_comment"
+                ],
+                "title": "ClaimResponse",
+                "description": "Response model for a single claim"
+            },
+            "ClaimSubmission": {
+                "properties": {
+                    "fields": {
+                        "additionalProperties": true,
+                        "type": "object",
+                        "title": "Fields"
+                    },
+                    "original_fields": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Original Fields"
+                    },
+                    "document_url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Document Url"
+                    },
+                    "file_type": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "File Type"
+                    },
+                    "user_modified_fields": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "User Modified Fields"
+                    },
+                    "ai_comment": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ai Comment"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "fields"
+                ],
+                "title": "ClaimSubmission",
+                "description": "Request model for submitting a new claim"
+            },
+            "ClaimSubmissionResponse": {
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "title": "Success"
+                    },
+                    "id": {
+                        "type": "string",
+                        "title": "Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "success",
+                    "id"
+                ],
+                "title": "ClaimSubmissionResponse",
+                "description": "Response model for claim submission"
+            },
+            "ClaimUpdate": {
+                "properties": {
+                    "fields": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Fields"
+                    },
+                    "status": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Status"
+                    },
+                    "reviewer_notes": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Reviewer Notes"
+                    }
+                },
+                "type": "object",
+                "title": "ClaimUpdate",
+                "description": "Request model for updating a claim"
+            },
+            "ErrorDetail": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "title": "Code",
+                        "description": "Error code: UNAUTHORIZED, INVALID_FILE, or EXTRACTION_FAILED",
+                        "examples": [
+                            "INVALID_FILE"
+                        ]
+                    },
+                    "message": {
+                        "type": "string",
+                        "title": "Message",
+                        "description": "Human-readable error message"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "title": "ErrorDetail",
+                "description": "Error details returned when request fails."
+            },
+            "ErrorResponse": {
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "title": "Success",
+                        "description": "Always false for error responses",
+                        "default": false
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/ErrorDetail",
+                        "description": "Error details"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "error"
+                ],
+                "title": "ErrorResponse",
+                "description": "Error response returned when request fails.",
+                "examples": [
+                    {
+                        "error": {
+                            "code": "UNAUTHORIZED",
+                            "message": "Invalid API key."
+                        },
+                        "success": false
+                    },
+                    {
+                        "error": {
+                            "code": "INVALID_FILE",
+                            "message": "Unsupported file type. Supported: JPEG, PNG, GIF, WebP, PDF"
+                        },
+                        "success": false
+                    },
+                    {
+                        "error": {
+                            "code": "EXTRACTION_FAILED",
+                            "message": "Failed to process document. Please try again."
+                        },
+                        "success": false
+                    }
+                ]
+            },
+            "ExtractData": {
+                "properties": {
+                    "is_valid_receipt": {
+                        "type": "boolean",
+                        "title": "Is Valid Receipt",
+                        "description": "Whether the document is a valid receipt/invoice/claim"
+                    },
+                    "is_submittable": {
+                        "type": "boolean",
+                        "title": "Is Submittable",
+                        "description": "Whether the receipt is readable and complete enough to process"
+                    },
+                    "rejection_reason": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Rejection Reason",
+                        "description": "User-friendly explanation if document was rejected"
+                    },
+                    "overall_confidence": {
+                        "type": "number",
+                        "maximum": 10.0,
+                        "minimum": 0.0,
+                        "title": "Overall Confidence",
+                        "description": "Average confidence score across all extracted fields"
+                    },
+                    "fields": {
+                        "$ref": "#/components/schemas/ExtractedFields",
+                        "description": "Extracted fields with confidence scores. Dynamic - additional fields may be returned."
+                    },
+                    "ai_comment": {
+                        "type": "string",
+                        "title": "Ai Comment",
+                        "description": "AI assessment of the document for claims reviewers"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "is_valid_receipt",
+                    "is_submittable",
+                    "overall_confidence",
+                    "fields",
+                    "ai_comment"
+                ],
+                "title": "ExtractData",
+                "description": "Extraction result containing validation status and extracted fields."
+            },
+            "ExtractResponse": {
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "title": "Success",
+                        "description": "Always true for successful responses",
+                        "default": true
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ExtractData",
+                        "description": "Extraction results"
+                    },
+                    "file_type": {
+                        "type": "string",
+                        "title": "File Type",
+                        "description": "Type of file processed: 'image' or 'pdf'"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "data",
+                    "file_type"
+                ],
+                "title": "ExtractResponse",
+                "description": "Successful extraction response.",
+                "example": {
+                    "data": {
+                        "ai_comment": "Clear medical receipt with itemized charges. All fields are readable.",
+                        "fields": {
+                            "amount": {
+                                "confidence": 9.5,
+                                "value": 150.0
+                            },
+                            "category": {
+                                "confidence": 8.0,
+                                "value": "Medical"
+                            },
+                            "currency": {
+                                "confidence": 9.0,
+                                "value": "SGD"
+                            },
+                            "line_items": {
+                                "confidence": 8.5,
+                                "value": [
+                                    {
+                                        "amount": 100.0,
+                                        "description": "Consultation Fee",
+                                        "quantity": 1,
+                                        "unit_price": 100.0
+                                    },
+                                    {
+                                        "amount": 50.0,
+                                        "description": "Medication",
+                                        "quantity": 1,
+                                        "unit_price": 50.0
+                                    }
+                                ]
+                            },
+                            "member_name": {
+                                "confidence": 8.5,
+                                "value": "John Doe"
+                            },
+                            "merchant": {
+                                "confidence": 8.8,
+                                "value": "ABC Medical Clinic"
+                            },
+                            "receipt_date": {
+                                "confidence": 9.0,
+                                "value": "2024-01-15"
+                            },
+                            "receipt_number": {
+                                "confidence": 9.5,
+                                "value": "INV-2024-001234"
+                            }
+                        },
+                        "is_submittable": true,
+                        "is_valid_receipt": true,
+                        "overall_confidence": 8.5
+                    },
+                    "file_type": "image",
+                    "success": true
+                }
+            },
+            "ExtractedFields": {
+                "properties": {
+                    "receipt_date": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/StringField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Receipt date in YYYY-MM-DD format"
+                    },
+                    "merchant": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/StringField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Store, clinic, or business name"
+                    },
+                    "amount": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/NumberField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Total amount on the receipt"
+                    },
+                    "currency": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/StringField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Currency code (e.g., SGD, USD, MYR)"
+                    },
+                    "category": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/StringField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Expense category: Medical, Dental, Pharmacy, Vision, etc."
+                    },
+                    "receipt_number": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/StringField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Receipt or invoice number"
+                    },
+                    "member_name": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/StringField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Patient or member name on receipt"
+                    },
+                    "policy_number": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/StringField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Insurance policy number if present"
+                    },
+                    "diagnosis": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/StringField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Medical diagnosis or reason for visit"
+                    },
+                    "line_items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/LineItemsField"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Itemized list of charges"
+                    }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "ExtractedFields",
+                "description": "Extracted fields from the receipt/claim document.\n\n\u26a0\ufe0f **Dynamic schema** - Additional fields beyond those documented may be returned.\nHandle unknown fields gracefully."
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "HealthResponse": {
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "example": "ok"
+                    },
+                    "version": {
+                        "type": "string",
+                        "title": "Version",
+                        "example": "1.0.0"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "status",
+                    "version"
+                ],
+                "title": "HealthResponse"
+            },
+            "LineItem": {
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "description": "Item description"
+                    },
+                    "description_chinese": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Description Chinese",
+                        "description": "Chinese description if available"
+                    },
+                    "quantity": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Quantity",
+                        "description": "Quantity of items"
+                    },
+                    "unit_price": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Unit Price",
+                        "description": "Price per unit"
+                    },
+                    "amount": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Amount",
+                        "description": "Total amount (quantity \u00d7 unit_price)"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description"
+                ],
+                "title": "LineItem",
+                "description": "Individual line item from a receipt.",
+                "example": {
+                    "amount": 100.0,
+                    "description": "Consultation Fee",
+                    "description_chinese": "\u8bca\u8d39",
+                    "quantity": 1,
+                    "unit_price": 100.0
+                }
+            },
+            "LineItemsField": {
+                "properties": {
+                    "value": {
+                        "items": {
+                            "$ref": "#/components/schemas/LineItem"
+                        },
+                        "type": "array",
+                        "title": "Value",
+                        "description": "Array of line items"
+                    },
+                    "confidence": {
+                        "type": "number",
+                        "maximum": 10.0,
+                        "minimum": 0.0,
+                        "title": "Confidence",
+                        "description": "Confidence score from 0 (uncertain) to 10 (certain)"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "value",
+                    "confidence"
+                ],
+                "title": "LineItemsField",
+                "description": "Field containing line items array with confidence score.",
+                "example": {
+                    "confidence": 8.5,
+                    "value": [
+                        {
+                            "amount": 100.0,
+                            "description": "Consultation",
+                            "quantity": 1,
+                            "unit_price": 100.0
+                        },
+                        {
+                            "amount": 50.0,
+                            "description": "Medication",
+                            "quantity": 2,
+                            "unit_price": 25.0
+                        }
+                    ]
+                }
+            },
+            "NumberField": {
+                "properties": {
+                    "value": {
+                        "type": "number",
+                        "title": "Value",
+                        "description": "Extracted numeric value"
+                    },
+                    "confidence": {
+                        "type": "number",
+                        "maximum": 10.0,
+                        "minimum": 0.0,
+                        "title": "Confidence",
+                        "description": "Confidence score from 0 (uncertain) to 10 (certain)"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "value",
+                    "confidence"
+                ],
+                "title": "NumberField",
+                "description": "Field containing a numeric value with confidence score.",
+                "example": {
+                    "confidence": 9.0,
+                    "value": 150.0
+                }
+            },
+            "StringField": {
+                "properties": {
+                    "value": {
+                        "type": "string",
+                        "title": "Value",
+                        "description": "Extracted string value"
+                    },
+                    "confidence": {
+                        "type": "number",
+                        "maximum": 10.0,
+                        "minimum": 0.0,
+                        "title": "Confidence",
+                        "description": "Confidence score from 0 (uncertain) to 10 (certain)"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "value",
+                    "confidence"
+                ],
+                "title": "StringField",
+                "description": "Field containing a string value with confidence score.",
+                "example": {
+                    "confidence": 8.5,
+                    "value": "ABC Medical Clinic"
+                }
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            }
+        },
+        "securitySchemes": {
+            "APIKeyHeader": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "X-API-Key"
+            }
+        }
+    }
+}

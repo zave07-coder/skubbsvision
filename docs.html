@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkubbsVision — API Documentation</title>
+  <meta name="description" content="SkubbsVision OCR Claim Extraction API Documentation" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; }
+    /* Custom ReDoc overrides */
+    .menu-content { background: #fafafa !important; }
+    a[href="/"] {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #1e293b;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    /* Top bar */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Inter', sans-serif;
+    }
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-bar-logo {
+      width: 32px;
+      height: 32px;
+      background: #4BA3E3;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .top-bar-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: #0f172a;
+    }
+    .top-bar-title span { color: #4BA3E3; }
+    .top-bar-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: #4BA3E3;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      padding: 2px 10px;
+    }
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .top-bar-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .top-bar-link:hover { color: #4BA3E3; }
+    .top-bar-link-primary {
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      background: #0f172a;
+      text-decoration: none;
+      padding: 6px 16px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .top-bar-link-primary:hover { background: #1e293b; }
+  </style>
+</head>
+<body>
+  <!-- Top navigation bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div class="top-bar-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+      </div>
+      <div class="top-bar-title">Skubbs<span>Vision</span></div>
+      <div class="top-bar-badge">API v1.0.0</div>
+    </div>
+    <div class="top-bar-right">
+      <a href="/" class="top-bar-link">&larr; Back to Presentation</a>
+      <a href="https://skb-claim-production.up.railway.app/docs" target="_blank" class="top-bar-link">Swagger UI</a>
+      <a href="https://skb-claim-production.up.railway.app/api/v1/health" target="_blank" class="top-bar-link-primary">Test API</a>
+    </div>
+  </div>
+
+  <!-- ReDoc -->
+  <redoc spec-url="openapi.json"
+    hide-hostname="false"
+    expand-responses="200"
+    path-in-middle-panel="true"
+    theme='{
+      "typography": {
+        "fontFamily": "Inter, system-ui, sans-serif",
+        "headings": { "fontFamily": "Inter, system-ui, sans-serif", "fontWeight": "700" },
+        "code": { "fontFamily": "JetBrains Mono, monospace", "fontSize": "13px" }
+      },
+      "colors": {
+        "primary": { "main": "#4BA3E3" },
+        "success": { "main": "#10b981" },
+        "error": { "main": "#ef4444" },
+        "text": { "primary": "#0f172a", "secondary": "#64748b" }
+      },
+      "sidebar": {
+        "backgroundColor": "#f8fafc",
+        "textColor": "#334155",
+        "activeTextColor": "#4BA3E3"
+      },
+      "rightPanel": {
+        "backgroundColor": "#0f172a"
+      }
+    }'
+  ></redoc>
+  <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+</body>
+</html>
