@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkubbsVision — AI Claims Processing Platform</title>
+  <title>SkubbsVision — AI Document Intelligence API</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -32,7 +32,7 @@
     .stat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
     .section-fade { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
     .section-fade.visible { opacity: 1; transform: translateY(0); }
-    .check { color: #10b981; }
+    .code-block { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; }
   </style>
 </head>
 <body class="bg-white text-slate-900 antialiased">
@@ -47,11 +47,12 @@
         <span class="text-lg font-bold tracking-tight">Skubbs<span class="text-skubbs-500">Vision</span></span>
       </div>
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="#challenge" class="hover:text-skubbs-500 transition-colors">Challenge</a>
-        <a href="#solution" class="hover:text-skubbs-500 transition-colors">Solution</a>
+        <a href="#what" class="hover:text-skubbs-500 transition-colors">What It Does</a>
+        <a href="#api" class="hover:text-skubbs-500 transition-colors">The API</a>
         <a href="#how-it-works" class="hover:text-skubbs-500 transition-colors">How It Works</a>
         <a href="#integration" class="hover:text-skubbs-500 transition-colors">Integration</a>
-        <a href="#investment" class="hover:text-skubbs-500 transition-colors">Investment</a>
+        <a href="#roadmap" class="hover:text-skubbs-500 transition-colors">Roadmap</a>
+        <a href="#security" class="hover:text-skubbs-500 transition-colors">Security</a>
         <a href="#demo" class="hover:text-skubbs-500 transition-colors">Demo</a>
         <a href="docs.html" class="hover:text-skubbs-500 transition-colors">API Docs</a>
       </div>
@@ -68,31 +69,31 @@
     <div class="absolute bottom-20 -right-40 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
 
     <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-      <div class="inline-flex items-center gap-2 bg-skubbs-50 border border-skubbs-200 rounded-full px-4 py-1.5 mb-8">
+      <div class="inline-flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-full px-4 py-1.5 mb-8">
         <span class="w-2 h-2 bg-emerald-500 rounded-full pulse-soft"></span>
-        <span class="text-sm font-medium text-skubbs-600">Proposal for Integrated Health Plans</span>
+        <span class="text-sm font-medium text-slate-300">API-First Document Intelligence</span>
       </div>
 
       <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[1.1] mb-6">
-        Automate Claims.<br />
-        <span class="gradient-text">Reduce Costs. Scale.</span>
+        Send a Document.<br />
+        <span class="gradient-text">Get Structured Data Back.</span>
       </h1>
 
       <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-        AI-powered document processing that turns <strong class="text-slate-700">40,000 - 60,000 claims per month</strong>
-        from a manual bottleneck into an automated workflow — faster, more accurate, and at a fraction of the cost.
+        SkubbsVision is an <strong class="text-slate-700">AI-powered document intelligence service</strong> — one API call to extract,
+        structure, and score data from any document. Comes with a built-in admin portal. Plug into your mobile app, portal, or any system.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
         <a href="#demo" class="px-8 py-3.5 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-all hover:shadow-lg">
-          View Live Demo &rarr;
+          See Live Demo &rarr;
         </a>
-        <a href="#investment" class="px-8 py-3.5 bg-white border-2 border-slate-200 text-slate-700 font-semibold rounded-xl hover:border-slate-300 transition-all">
-          Investment Summary
+        <a href="docs.html" class="px-8 py-3.5 bg-white border-2 border-slate-200 text-slate-700 font-semibold rounded-xl hover:border-slate-300 transition-all">
+          Explore API Docs
         </a>
       </div>
 
-      <!-- Key business metrics -->
+      <!-- Key metrics -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
         <div class="stat-card bg-white border border-slate-200 rounded-2xl p-5 glow-sm">
           <div class="text-3xl font-black text-slate-900">&lt; 3s</div>
@@ -103,8 +104,8 @@
           <div class="text-sm text-slate-500 mt-1">Accuracy Rate</div>
         </div>
         <div class="stat-card bg-white border border-slate-200 rounded-2xl p-5 glow-sm">
-          <div class="text-3xl font-black text-emerald-600">70%</div>
-          <div class="text-sm text-slate-500 mt-1">Less Manual Work</div>
+          <div class="text-3xl font-black text-slate-900">1 Call</div>
+          <div class="text-sm text-slate-500 mt-1">Simple Integration</div>
         </div>
         <div class="stat-card bg-white border border-slate-200 rounded-2xl p-5 glow-sm">
           <div class="text-3xl font-black text-slate-900">EN/CN</div>
@@ -114,147 +115,192 @@
     </div>
   </section>
 
-  <!-- The Challenge -->
-  <section id="challenge" class="py-24 bg-slate-50 section-fade">
+  <!-- What It Does -->
+  <section id="what" class="py-24 bg-slate-50 section-fade">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-16">
-        <span class="text-sm font-semibold text-red-500 uppercase tracking-wider">The Challenge</span>
-        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Manual Claims Processing Doesn't Scale</h2>
+        <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">The Service</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">One API. Any Document. Structured Data Out.</h2>
+        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">You send us a document — photo, scan, or digital PDF. We return clean, structured JSON with every field extracted and a confidence score for each.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6">
-          <div class="flex gap-4">
-            <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center shrink-0">
-              <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <div class="grid md:grid-cols-2 gap-8 mb-10">
+        <!-- API Service -->
+        <div class="bg-slate-900 rounded-3xl p-8 text-white relative overflow-hidden">
+          <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 20px 20px;"></div>
+          <div class="relative">
+            <div class="absolute top-0 right-0">
+              <span class="text-xs font-bold text-white bg-gradient-to-r from-skubbs-500 to-blue-600 rounded-full px-3 py-1">Core API</span>
             </div>
-            <div>
-              <h4 class="font-bold text-lg">Slow Turnaround</h4>
-              <p class="text-slate-500 mt-1">Staff manually read each receipt, key in data field by field. At 60,000 documents/month, this creates backlogs and delays payouts.</p>
+            <div class="w-14 h-14 bg-skubbs-500 rounded-2xl flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
             </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center shrink-0">
-              <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>
-            </div>
-            <div>
-              <h4 class="font-bold text-lg">Human Error</h4>
-              <p class="text-slate-500 mt-1">Typos, misread amounts, wrong dates — manual data entry across bilingual documents introduces costly errors.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center shrink-0">
-              <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-            </div>
-            <div>
-              <h4 class="font-bold text-lg">Rising Labour Costs</h4>
-              <p class="text-slate-500 mt-1">Scaling means hiring more data entry staff. Each new hire adds recurring cost without improving speed per claim.</p>
+            <h3 class="text-xl font-bold mb-3">AI Extraction API</h3>
+            <p class="text-slate-400 text-sm mb-5">Send any document, get structured data back instantly.</p>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div class="bg-slate-800 rounded-xl p-3">
+                <div class="text-skubbs-400 font-semibold text-xs mb-1">Input</div>
+                <ul class="space-y-1.5 text-slate-300 text-xs">
+                  <li>JPEG / PNG photos</li>
+                  <li>Scanned PDFs</li>
+                  <li>Digital PDFs</li>
+                  <li>English &amp; Chinese</li>
+                </ul>
+              </div>
+              <div class="bg-slate-800 rounded-xl p-3">
+                <div class="text-emerald-400 font-semibold text-xs mb-1">Output</div>
+                <ul class="space-y-1.5 text-slate-300 text-xs">
+                  <li>Structured JSON</li>
+                  <li>All fields extracted</li>
+                  <li>Confidence scores</li>
+                  <li>Ready for your UI</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="bg-white border border-slate-200 rounded-3xl p-8">
-          <h4 class="font-bold text-lg mb-6 text-center">At 60,000 Docs/Month</h4>
-          <div class="space-y-5">
-            <div>
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-600">Manual Processing</span>
-                <span class="font-bold text-red-600">~5 min/doc</span>
-              </div>
-              <div class="h-4 bg-red-100 rounded-full overflow-hidden"><div class="h-full bg-red-500 rounded-full" style="width:100%"></div></div>
-              <div class="text-xs text-slate-400 mt-1">= 5,000 staff hours/month</div>
-            </div>
-            <div>
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-600">With SkubbsVision</span>
-                <span class="font-bold text-emerald-600">~3 sec/doc + review</span>
-              </div>
-              <div class="h-4 bg-emerald-100 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full" style="width:15%"></div></div>
-              <div class="text-xs text-slate-400 mt-1">= ~750 staff hours/month (85% reduction)</div>
-            </div>
+        <!-- Admin Portal (included) -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-8 relative overflow-hidden">
+          <div class="absolute top-6 right-6">
+            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1">Included</span>
           </div>
+          <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7" /></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Admin Portal</h3>
+          <p class="text-slate-500 text-sm mb-5">A ready-to-use web portal for your team to view, search, and retrieve all scanned data and documents.</p>
+          <ul class="space-y-2.5 text-sm text-slate-600">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              View all submissions in real-time
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Search &amp; retrieve scanned details
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              View original vs corrected data
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Generate reports &amp; export data
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Use as an ad-hoc document scanner
+            </li>
+          </ul>
         </div>
+      </div>
+
+      <div class="bg-skubbs-50 border border-skubbs-200 rounded-2xl p-5 text-center">
+        <p class="text-sm text-skubbs-700"><strong>Complete service:</strong> API for integration + Admin Portal for visibility. No infrastructure for you to manage — we host and maintain everything.</p>
       </div>
     </div>
   </section>
 
-  <!-- The Solution -->
-  <section id="solution" class="py-24 section-fade">
-    <div class="max-w-7xl mx-auto px-6">
+  <!-- The API -->
+  <section id="api" class="py-24 section-fade">
+    <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-16">
-        <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">Our Solution</span>
-        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">One Platform, Three Touchpoints</h2>
-        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">SkubbsVision covers every step — from the member uploading a receipt to your claims team approving it.</p>
+        <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">The API</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Simple to Integrate. Powerful Under the Hood.</h2>
+        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">A single REST endpoint. Standard HTTP. JSON response. Your team can integrate it in a day.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Mobile -->
-        <div class="bg-white rounded-3xl border border-slate-200 p-8 hover:shadow-xl transition-all duration-300 group">
-          <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="7" y="2" width="10" height="20" rx="2" /><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" /></svg>
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <!-- Code sample -->
+        <div class="bg-slate-900 rounded-3xl p-6 md:p-8 overflow-hidden">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+            <span class="text-xs text-slate-500 ml-2">API Request</span>
           </div>
-          <h3 class="text-xl font-bold mb-2">For Members</h3>
-          <p class="text-sm text-skubbs-500 font-semibold mb-4">Mobile App Experience</p>
-          <p class="text-slate-500 mb-6 leading-relaxed">Members upload a claim from their phone. AI reads the document instantly and fills in all the fields automatically.</p>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Snap a photo or upload PDF</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Fields auto-populated in seconds</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Review &amp; correct uncertain fields</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Receipt date validation (3-month rule)</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">English &amp; Chinese support</span></li>
-          </ul>
+          <pre class="code-block text-sm text-slate-300 overflow-x-auto leading-relaxed"><code><span class="text-emerald-400">POST</span> <span class="text-skubbs-400">/api/v1/extract</span>
+
+<span class="text-slate-500">Headers:</span>
+  <span class="text-amber-400">X-API-Key</span>: your-api-key
+  <span class="text-amber-400">Content-Type</span>: multipart/form-data
+
+<span class="text-slate-500">Body:</span>
+  <span class="text-amber-400">file</span>: receipt.pdf</code></pre>
+          <div class="border-t border-slate-700 mt-6 pt-6">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-xs text-slate-500">Response (JSON)</span>
+            </div>
+            <pre class="code-block text-sm text-slate-300 overflow-x-auto leading-relaxed"><code>{
+  <span class="text-skubbs-400">"merchant"</span>: {
+    <span class="text-amber-400">"value"</span>: <span class="text-emerald-400">"ABC Medical Centre"</span>,
+    <span class="text-amber-400">"confidence"</span>: <span class="text-purple-400">9.2</span>
+  },
+  <span class="text-skubbs-400">"amount"</span>: {
+    <span class="text-amber-400">"value"</span>: <span class="text-purple-400">328.50</span>,
+    <span class="text-amber-400">"confidence"</span>: <span class="text-purple-400">9.8</span>
+  },
+  <span class="text-skubbs-400">"receipt_date"</span>: {
+    <span class="text-amber-400">"value"</span>: <span class="text-emerald-400">"2026-01-15"</span>,
+    <span class="text-amber-400">"confidence"</span>: <span class="text-purple-400">8.5</span>
+  },
+  <span class="text-skubbs-400">"line_items"</span>: { <span class="text-slate-500">...</span> }
+}</code></pre>
+          </div>
         </div>
 
-        <!-- API -->
-        <div class="bg-white rounded-3xl border border-slate-200 p-8 hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
-          <div class="absolute top-4 right-4">
-            <span class="text-xs font-bold text-white bg-gradient-to-r from-skubbs-500 to-blue-600 rounded-full px-3 py-1">Core Engine</span>
+        <!-- API capabilities -->
+        <div class="space-y-6">
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 flex gap-4">
+            <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-bold">Fast Response</h4>
+              <p class="text-sm text-slate-500 mt-1">Under 3 seconds per document. No queuing, no callbacks — synchronous response.</p>
+            </div>
           </div>
-          <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 flex gap-4">
+            <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-bold">Any Document Format</h4>
+              <p class="text-sm text-slate-500 mt-1">Photos (JPEG, PNG, WebP), scanned PDFs, digital PDFs — all handled automatically. No pre-processing needed on your end.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-bold mb-2">For Your IT Team</h3>
-          <p class="text-sm text-purple-600 font-semibold mb-4">Simple API Integration</p>
-          <p class="text-slate-500 mb-6 leading-relaxed">One API call — send any document, get structured data back. Plugs into your existing mobile app, portal, and admin systems.</p>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Single endpoint, any platform</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Images &amp; PDFs (scanned or digital)</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Per-field confidence scores</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Full API documentation</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Secure API key authentication</span></li>
-          </ul>
-        </div>
-
-        <!-- Admin -->
-        <div class="bg-white rounded-3xl border border-slate-200 p-8 hover:shadow-xl transition-all duration-300 group">
-          <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" /></svg>
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 flex gap-4">
+            <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-bold">Confidence Scoring</h4>
+              <p class="text-sm text-slate-500 mt-1">Every extracted field comes with a confidence score (0-10). Your app decides what to auto-accept and what to flag for review.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-bold mb-2">For Claims Team</h3>
-          <p class="text-sm text-emerald-600 font-semibold mb-4">Admin Review Portal</p>
-          <p class="text-slate-500 mb-6 leading-relaxed">Your claims staff see every submission with AI-extracted data, review corrections, and approve or reject with full audit trail.</p>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Live dashboard — new claims appear instantly</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">View original document alongside extracted data</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">See what the member corrected vs AI original</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Approve / reject with reviewer notes</span></li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">AI assessment summary per claim</span></li>
-          </ul>
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 flex gap-4">
+            <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+            </div>
+            <div>
+              <h4 class="font-bold">Full Documentation</h4>
+              <p class="text-sm text-slate-500 mt-1">Interactive API docs, request/response examples, error codes — everything your developers need to integrate quickly.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How It Works — simplified business view -->
+  <!-- How It Works — Workflow -->
   <section id="how-it-works" class="py-24 bg-slate-50 section-fade">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-16">
         <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">Workflow</span>
-        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">From Upload to Approval in Minutes</h2>
-        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">A streamlined journey for members and claims staff.</p>
+        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">How It Fits Into Your Flow</h2>
+        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">Your systems stay the same. SkubbsVision slots in as the intelligence layer.</p>
       </div>
 
-      <!-- Timeline style -->
       <div class="space-y-0">
         <!-- Step 1 -->
         <div class="flex gap-6 md:gap-10 items-start">
@@ -263,8 +309,8 @@
             <div class="w-0.5 h-full bg-slate-200 mt-2"></div>
           </div>
           <div class="pb-12">
-            <h4 class="text-xl font-bold">Member Uploads a Claim</h4>
-            <p class="text-slate-500 mt-2 leading-relaxed">Through the <strong>IHP Mobile App</strong> or <strong>Employee Portal</strong>. Snaps a photo of a receipt, picks from gallery, or uploads a PDF. English or Chinese — both work seamlessly.</p>
+            <h4 class="text-xl font-bold">User Uploads a Document</h4>
+            <p class="text-slate-500 mt-2 leading-relaxed">Through <strong>your</strong> mobile app, employee portal, or claims admin — wherever your users already submit claims. Nothing changes on the front-end.</p>
           </div>
         </div>
         <!-- Step 2 -->
@@ -274,19 +320,19 @@
             <div class="w-0.5 h-full bg-slate-200 mt-2"></div>
           </div>
           <div class="pb-12">
-            <h4 class="text-xl font-bold">AI Reads &amp; Extracts in Seconds</h4>
-            <p class="text-slate-500 mt-2 leading-relaxed">Our AI engine reads the document — whether it's a digital PDF or a photo of a crumpled receipt — and extracts every relevant field: date, merchant, amount, line items, diagnosis, policy number, and more. Each field gets a <strong>confidence score</strong>.</p>
+            <h4 class="text-xl font-bold">Your System Calls Our API</h4>
+            <p class="text-slate-500 mt-2 leading-relaxed">One <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">POST /api/v1/extract</code> call with the document attached. That's it — a single HTTP request from your backend.</p>
           </div>
         </div>
         <!-- Step 3 -->
         <div class="flex gap-6 md:gap-10 items-start">
           <div class="flex flex-col items-center">
-            <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">3</div>
+            <div class="w-12 h-12 bg-skubbs-500 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">3</div>
             <div class="w-0.5 h-full bg-slate-200 mt-2"></div>
           </div>
           <div class="pb-12">
-            <h4 class="text-xl font-bold">Member Reviews &amp; Corrects</h4>
-            <p class="text-slate-500 mt-2 leading-relaxed">High-confidence fields are auto-accepted. Low-confidence fields are <strong>highlighted for review</strong> — the member can edit before submitting. If the receipt is older than 3 months, the app warns them. The system tracks what was changed.</p>
+            <h4 class="text-xl font-bold">SkubbsVision Extracts &amp; Scores</h4>
+            <p class="text-slate-500 mt-2 leading-relaxed">Our AI engine reads the document — image or PDF, English or Chinese — and returns structured data with confidence scores for every field. Under 3 seconds.</p>
           </div>
         </div>
         <!-- Step 4 -->
@@ -295,290 +341,445 @@
             <div class="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">4</div>
           </div>
           <div class="pb-4">
-            <h4 class="text-xl font-bold">Claims Team Reviews &amp; Approves</h4>
-            <p class="text-slate-500 mt-2 leading-relaxed">The claim appears on the <strong>Admin Portal</strong> in real-time. Reviewers see the AI-extracted data, the original document, what the member changed, and an AI assessment. They approve, reject, or add notes — all in one place.</p>
+            <h4 class="text-xl font-bold">Your App Uses the Data</h4>
+            <p class="text-slate-500 mt-2 leading-relaxed">Auto-populate forms, flag uncertain fields for user review, route to admin for approval — <strong>your rules, your UX</strong>. We just provide the intelligence.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Data Correction Workflow -->
+  <!-- Confidence Scoring -->
   <section class="py-24 section-fade">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-16">
-        <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">Data Integrity</span>
-        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Full Visibility on Corrections</h2>
-        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">When a member corrects an AI-extracted field, the system tracks every change — giving your claims team complete transparency.</p>
-      </div>
-
-      <div class="bg-white border border-slate-200 rounded-3xl p-8 md:p-10 glow-sm">
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="text-center">
-            <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg class="w-7 h-7 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-            </div>
-            <h4 class="font-bold mb-2">AI Extracts</h4>
-            <div class="bg-purple-50 rounded-xl p-4 text-left text-sm space-y-2">
-              <div class="flex justify-between"><span class="text-slate-500">Merchant</span><span class="font-medium">ABC Clinic</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Amount</span><span class="font-medium">$328.50</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Date</span><span class="font-medium">2026-01-15</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Member</span><span class="font-medium text-amber-600">T. Wei Ming <span class="text-xs">(6.2)</span></span></div>
-            </div>
-            <p class="text-xs text-slate-400 mt-3">Original AI output saved</p>
-          </div>
-
-          <div class="text-center flex flex-col items-center justify-center">
-            <svg class="w-10 h-10 text-slate-300 rotate-90 md:rotate-0 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-            <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
-              <p class="text-sm font-semibold text-amber-800">Member Corrects</p>
-              <p class="text-xs text-amber-600 mt-1">"Tan Wei Ming"</p>
-            </div>
-            <svg class="w-10 h-10 text-slate-300 rotate-90 md:rotate-0 mt-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-          </div>
-
-          <div class="text-center">
-            <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <svg class="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>
-            </div>
-            <h4 class="font-bold mb-2">Admin Sees Both</h4>
-            <div class="bg-emerald-50 rounded-xl p-4 text-left text-sm space-y-2">
-              <div class="flex justify-between"><span class="text-slate-500">Merchant</span><span class="font-medium">ABC Clinic</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Amount</span><span class="font-medium">$328.50</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Date</span><span class="font-medium">2026-01-15</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Member</span><span class="font-medium text-emerald-600">Tan Wei Ming <span class="text-xs">(edited)</span></span></div>
-            </div>
-            <p class="text-xs text-slate-400 mt-3">Modified fields flagged for review</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Confidence Scoring — business language -->
-  <section class="py-24 bg-slate-50 section-fade">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center mb-16">
         <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">Quality Assurance</span>
-        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">AI Knows When It's Unsure</h2>
-        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">Every field gets a confidence score. High-confidence data flows through automatically. Uncertain data gets flagged for human review — the best of both worlds.</p>
+        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Built-In Confidence Scoring</h2>
+        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">Every field comes with a confidence score. Your application decides the thresholds — auto-accept high confidence, flag low confidence for review.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
         <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 text-center">
           <div class="text-4xl font-black text-emerald-600 mb-2">8 - 10</div>
-          <div class="font-semibold text-emerald-800 mb-2">Auto-Accepted</div>
-          <p class="text-sm text-emerald-700/70">Clear, unambiguous data. No human review needed — flows straight through.</p>
+          <div class="font-semibold text-emerald-800 mb-2">High Confidence</div>
+          <p class="text-sm text-emerald-700/70">Clear, unambiguous data. Your app can auto-accept these fields without user intervention.</p>
           <div class="mt-4 h-3 bg-emerald-200 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full" style="width:90%"></div></div>
         </div>
         <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
           <div class="text-4xl font-black text-amber-600 mb-2">5 - 7</div>
-          <div class="font-semibold text-amber-800 mb-2">Review Suggested</div>
-          <p class="text-sm text-amber-700/70">Some ambiguity. Member is prompted to verify before submitting.</p>
+          <div class="font-semibold text-amber-800 mb-2">Medium Confidence</div>
+          <p class="text-sm text-amber-700/70">Some ambiguity. Your app can prompt users to verify before proceeding.</p>
           <div class="mt-4 h-3 bg-amber-200 rounded-full overflow-hidden"><div class="h-full bg-amber-500 rounded-full" style="width:60%"></div></div>
         </div>
         <div class="bg-red-50 border border-red-200 rounded-2xl p-6 text-center">
           <div class="text-4xl font-black text-red-600 mb-2">0 - 4</div>
-          <div class="font-semibold text-red-800 mb-2">Manual Entry Required</div>
-          <p class="text-sm text-red-700/70">Significant uncertainty. Field is highlighted and the member fills it in manually.</p>
+          <div class="font-semibold text-red-800 mb-2">Low Confidence</div>
+          <p class="text-sm text-red-700/70">Significant uncertainty. Your app can highlight these for manual entry.</p>
           <div class="mt-4 h-3 bg-red-200 rounded-full overflow-hidden"><div class="h-full bg-red-500 rounded-full" style="width:30%"></div></div>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <div class="inline-block bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4">
+          <p class="text-sm text-slate-600"><strong class="text-slate-800">You define the thresholds.</strong> Our API gives you the data and the confidence — your business logic decides what happens next.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Integration Model for IHP -->
-  <section id="integration" class="py-24 section-fade">
+  <!-- Integration Model -->
+  <section id="integration" class="py-24 bg-slate-50 section-fade">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-16">
         <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">Integration</span>
-        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">How It Fits With IHP</h2>
-        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">We provide the AI engine. You integrate it into your existing systems. Minimal disruption, maximum impact.</p>
+        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Plugs Into Any System</h2>
+        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">SkubbsVision works behind the scenes. Your existing apps, portals, and admin systems stay exactly as they are — just smarter.</p>
       </div>
 
-      <div class="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 glow-sm mb-12">
+      <div class="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 glow-sm mb-10">
         <div class="grid md:grid-cols-5 gap-4 items-center text-center">
-          <!-- IHP Systems -->
+          <!-- Their Systems -->
           <div class="space-y-3">
             <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
-              <div class="text-xs font-bold text-blue-600 mb-1">IHP Mobile App</div>
+              <div class="text-xs font-bold text-blue-600 mb-1">Mobile App</div>
               <div class="text-[10px] text-slate-500">Your existing app</div>
             </div>
             <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
-              <div class="text-xs font-bold text-purple-600 mb-1">IHP Employee Portal</div>
+              <div class="text-xs font-bold text-purple-600 mb-1">Employee Portal</div>
               <div class="text-[10px] text-slate-500">Your existing portal</div>
             </div>
             <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-              <div class="text-xs font-bold text-emerald-600 mb-1">IHP Claims Admin</div>
+              <div class="text-xs font-bold text-emerald-600 mb-1">Claims Admin</div>
               <div class="text-[10px] text-slate-500">Your existing admin</div>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 border-dashed">
+              <div class="text-xs font-bold text-slate-400 mb-1">Any Other App</div>
+              <div class="text-[10px] text-slate-400">Future systems</div>
             </div>
           </div>
 
           <!-- Arrow -->
           <div class="flex flex-col items-center gap-1">
             <svg class="w-8 h-8 text-slate-300 rotate-90 md:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
-            <span class="text-[10px] text-slate-400 font-medium">Send doc, get data</span>
+            <span class="text-[10px] text-slate-400 font-medium">REST API</span>
           </div>
 
-          <!-- SkubbsVision -->
+          <!-- SkubbsVision Blackbox -->
           <div class="bg-slate-900 rounded-2xl p-6 text-white">
             <div class="w-10 h-10 bg-skubbs-500 rounded-xl flex items-center justify-center mx-auto mb-3">
               <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
             </div>
             <div class="text-sm font-bold">SkubbsVision</div>
-            <div class="text-[10px] text-slate-400 mt-1">AI Processing Engine</div>
-            <div class="mt-3 space-y-1.5">
-              <div class="bg-slate-800 rounded-lg px-2 py-1 text-[10px]">Document Analysis</div>
-              <div class="bg-slate-800 rounded-lg px-2 py-1 text-[10px]">Field Extraction</div>
-              <div class="bg-slate-800 rounded-lg px-2 py-1 text-[10px]">Confidence Scoring</div>
-              <div class="bg-slate-800 rounded-lg px-2 py-1 text-[10px]">Claims Storage</div>
+            <div class="text-[10px] text-skubbs-400 mt-1">AI Processing Engine</div>
+            <div class="mt-4 text-[10px] text-slate-500 border-t border-slate-700 pt-3">
+              Document in &rarr; Data out<br/>
+              You don't manage the AI.
             </div>
           </div>
 
           <!-- Arrow -->
           <div class="flex flex-col items-center gap-1">
             <svg class="w-8 h-8 text-slate-300 rotate-90 md:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-            <span class="text-[10px] text-slate-400 font-medium">Secure &amp; Encrypted</span>
+            <span class="text-[10px] text-slate-400 font-medium">JSON Response</span>
           </div>
 
-          <!-- Infrastructure -->
+          <!-- Infrastructure (hidden from client) -->
           <div class="space-y-3">
             <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-emerald-200 rounded-xl p-4">
               <div class="text-xs font-bold text-emerald-700 mb-1">AI Vision Engine</div>
-              <div class="text-[10px] text-slate-500">Multimodal AI</div>
+              <div class="text-[10px] text-slate-500">Managed by Skubbs</div>
             </div>
             <div class="bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-200 rounded-xl p-4">
-              <div class="text-xs font-bold text-sky-700 mb-1">Database</div>
-              <div class="text-[10px] text-slate-500">Claims Storage</div>
+              <div class="text-xs font-bold text-sky-700 mb-1">Cloud Infrastructure</div>
+              <div class="text-[10px] text-slate-500">Managed by Skubbs</div>
+            </div>
+            <div class="bg-gradient-to-br from-violet-50 to-purple-50 border border-violet-200 rounded-xl p-4">
+              <div class="text-xs font-bold text-violet-700 mb-1">Database</div>
+              <div class="text-[10px] text-slate-500">Managed by Skubbs</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Key integration message -->
-      <div class="bg-skubbs-50 border border-skubbs-200 rounded-2xl p-6 text-center">
-        <p class="text-skubbs-700 font-semibold">IHP integrates our API on your side. We handle all the AI, processing, and infrastructure. Your team controls the user experience.</p>
+      <!-- Key message -->
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 text-center">
+          <div class="text-2xl mb-2">0</div>
+          <div class="text-sm font-bold text-slate-800">Infrastructure for You to Manage</div>
+          <p class="text-xs text-slate-500 mt-1">We host and maintain everything</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 text-center">
+          <div class="text-2xl mb-2">1</div>
+          <div class="text-sm font-bold text-slate-800">API Endpoint to Integrate</div>
+          <p class="text-xs text-slate-500 mt-1">Single endpoint, any platform</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 text-center">
+          <div class="text-2xl mb-2">&infin;</div>
+          <div class="text-sm font-bold text-slate-800">Applications It Can Power</div>
+          <p class="text-xs text-slate-500 mt-1">Claims, onboarding, compliance, more</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Investment Summary -->
-  <section id="investment" class="py-24 bg-slate-950 text-white section-fade">
+  <!-- Implementation Roadmap -->
+  <section id="roadmap" class="py-24 section-fade">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-16">
-        <span class="text-sm font-semibold text-skubbs-400 uppercase tracking-wider">Investment</span>
-        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Clear, Predictable Pricing</h2>
-        <p class="text-slate-400 mt-4 max-w-2xl mx-auto text-lg">One-time setup, transparent monthly costs, no surprises.</p>
+        <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">Rollout Plan</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Phased Implementation</h2>
+        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">A proven rollout strategy — start small, validate, then scale.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <!-- One-time -->
-        <div class="border border-slate-800 rounded-3xl p-8">
-          <div class="text-xs font-semibold text-skubbs-400 uppercase tracking-wider mb-4">One-Time Setup</div>
-          <div class="text-5xl font-black mb-2">$55,000</div>
-          <p class="text-slate-400 text-sm mb-6">AI Claims Platform Implementation</p>
-          <ul class="space-y-3 text-sm text-slate-300">
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>AI/OCR model setup &amp; training</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>API development &amp; documentation</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Integration support — Mobile App, Employee Portal, Claims Admin</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>3 months post go-live support included</li>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Phase 1 -->
+        <div class="bg-white border-2 border-blue-200 rounded-3xl p-8 relative">
+          <div class="absolute -top-3 left-6">
+            <span class="text-xs font-bold text-white bg-blue-600 rounded-full px-4 py-1.5">Phase 1</span>
+          </div>
+          <div class="mt-2 mb-4">
+            <div class="text-sm font-bold text-blue-600 mb-1">3 - 4 Months</div>
+            <h3 class="text-xl font-bold">OCR Beta Launch</h3>
+          </div>
+          <p class="text-sm text-slate-500 mb-5">Customer-facing OCR integration. Members can submit claims via app and portal with AI-powered extraction.</p>
+          <ul class="space-y-2.5 text-sm text-slate-600">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              API integration with mobile app &amp; portal
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Selected companies only (beta group)
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Admin portal for claims team
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Performance monitoring &amp; tuning
+            </li>
           </ul>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <div class="text-xs text-slate-400 font-medium">Scope: Selected companies &bull; Beta validation</div>
+          </div>
         </div>
 
-        <!-- Monthly -->
-        <div class="border border-slate-800 rounded-3xl p-8">
-          <div class="text-xs font-semibold text-skubbs-400 uppercase tracking-wider mb-4">Monthly Operations</div>
-          <div class="text-5xl font-black mb-2">$3,950<span class="text-xl font-medium text-slate-400">/mo</span></div>
-          <p class="text-slate-400 text-sm mb-6">Running costs for up to 60,000 docs</p>
-          <ul class="space-y-3 text-sm text-slate-300">
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Document Processing (AI/OCR) — $2,500/mo</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Platform Support &amp; SLA — $850/mo</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Cloud Hosting &amp; Infrastructure — $600/mo</li>
-            <li class="flex items-start gap-3 text-slate-500"><svg class="w-5 h-5 text-slate-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>Overage: $0.05 per page beyond 60K</li>
+        <!-- Phase 2 -->
+        <div class="bg-white border-2 border-purple-200 rounded-3xl p-8 relative">
+          <div class="absolute -top-3 left-6">
+            <span class="text-xs font-bold text-white bg-purple-600 rounded-full px-4 py-1.5">Phase 2</span>
+          </div>
+          <div class="mt-2 mb-4">
+            <div class="text-sm font-bold text-purple-600 mb-1">~2 Months</div>
+            <h3 class="text-xl font-bold">Full Rollout</h3>
+          </div>
+          <p class="text-sm text-slate-500 mb-5">Expand OCR to all companies based on learnings from the beta phase. Full production scale.</p>
+          <ul class="space-y-2.5 text-sm text-slate-600">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-purple-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Roll out to all companies
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-purple-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Scale infrastructure for full volume
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-purple-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Incorporate beta feedback &amp; refinements
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-purple-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Full production support &amp; SLA
+            </li>
           </ul>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <div class="text-xs text-slate-400 font-medium">Scope: All companies &bull; Full production</div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="bg-white border-2 border-emerald-200 rounded-3xl p-8 relative">
+          <div class="absolute -top-3 left-6">
+            <span class="text-xs font-bold text-white bg-emerald-600 rounded-full px-4 py-1.5">Phase 3</span>
+          </div>
+          <div class="mt-2 mb-4">
+            <div class="text-sm font-bold text-emerald-600 mb-1">2 - 3 Months</div>
+            <h3 class="text-xl font-bold">Automation</h3>
+          </div>
+          <p class="text-sm text-slate-500 mb-5">Leverage confidence scores and historical data to automate claim decisions — auto-approve, auto-reject, smart routing.</p>
+          <ul class="space-y-2.5 text-sm text-slate-600">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Auto-approve high-confidence claims
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Auto-reject flagged submissions
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Smart routing based on rules
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Claims processing pipeline
+            </li>
+          </ul>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <div class="text-xs text-slate-400 font-medium">Scope: Intelligent automation &bull; TBD</div>
+          </div>
         </div>
       </div>
 
-      <!-- Howden add-on -->
-      <div class="border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          <div class="text-xs font-semibold text-skubbs-400 uppercase tracking-wider mb-1">Add-On</div>
-          <h4 class="text-lg font-bold">Howden Mobile App Integration</h4>
-          <p class="text-sm text-slate-400">Custom integration with Howden's existing mobile infrastructure</p>
+      <!-- Total timeline -->
+      <div class="mt-10 bg-slate-900 rounded-2xl p-6 text-center text-white">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+            <span class="text-sm">Phase 1: 3-4 months</span>
+          </div>
+          <svg class="w-4 h-4 text-slate-600 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+            <span class="text-sm">Phase 2: ~2 months</span>
+          </div>
+          <svg class="w-4 h-4 text-slate-600 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+            <span class="text-sm">Phase 3: 2-3 months</span>
+          </div>
         </div>
-        <div class="text-3xl font-black whitespace-nowrap">$40,000</div>
-      </div>
-
-      <!-- Cost per doc callout -->
-      <div class="mt-12 text-center">
-        <div class="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl px-8 py-4">
-          <span class="text-emerald-400 text-lg font-bold">Effective cost:</span>
-          <span class="text-3xl font-black text-white">~$0.066</span>
-          <span class="text-emerald-400 text-lg font-bold">per document</span>
-        </div>
-        <p class="text-slate-500 text-sm mt-3">At 60,000 documents/month ($3,950 &divide; 60,000)</p>
+        <p class="text-slate-400 text-xs mt-3">Total estimated timeline: 7-9 months to full automation</p>
       </div>
     </div>
   </section>
 
-  <!-- Live Demo Section -->
+  <!-- Security & Reliability -->
+  <section id="security" class="py-24 bg-slate-50 section-fade">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">Enterprise Ready</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Secure. Fast. Reliable.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+          </div>
+          <h4 class="font-bold mb-1">API Key Auth</h4>
+          <p class="text-xs text-slate-500">Secure API key authentication per client. Rotate keys anytime.</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+          </div>
+          <h4 class="font-bold mb-1">HTTPS Only</h4>
+          <p class="text-xs text-slate-500">All data in transit is encrypted. No plaintext communication.</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+          </div>
+          <h4 class="font-bold mb-1">&lt; 3s Latency</h4>
+          <p class="text-xs text-slate-500">Sub-3-second processing. No async polling needed.</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>
+          </div>
+          <h4 class="font-bold mb-1">Scalable</h4>
+          <p class="text-xs text-slate-500">Handles 40K-60K+ docs/month. Scales with your volume.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Beyond Claims -->
+  <section class="py-24 bg-slate-50 section-fade">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">Versatility</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Beyond Claims Processing</h2>
+        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">The same API that processes claims can power document intelligence across your organization.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <div class="text-lg mb-2">
+            <svg class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" /></svg>
+          </div>
+          <h4 class="font-bold text-sm">Medical Claims</h4>
+          <p class="text-xs text-slate-500 mt-1">Receipts, bills, diagnosis reports — auto-extract all fields</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <div class="text-lg mb-2">
+            <svg class="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" /></svg>
+          </div>
+          <h4 class="font-bold text-sm">Expense Reports</h4>
+          <p class="text-xs text-slate-500 mt-1">Corporate expense processing &amp; reimbursement</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <div class="text-lg mb-2">
+            <svg class="w-6 h-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" /></svg>
+          </div>
+          <h4 class="font-bold text-sm">Ad-Hoc Document Scanner</h4>
+          <p class="text-xs text-slate-500 mt-1">Scan any document on demand and retrieve structured data via the admin portal</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <div class="text-lg mb-2">
+            <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+          </div>
+          <h4 class="font-bold text-sm">Reports &amp; Analytics</h4>
+          <p class="text-xs text-slate-500 mt-1">View and retrieve scanned details, generate reports from the admin portal</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <div class="text-lg mb-2">
+            <svg class="w-6 h-6 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" /></svg>
+          </div>
+          <h4 class="font-bold text-sm">Member Onboarding</h4>
+          <p class="text-xs text-slate-500 mt-1">ID verification, KYC documents, form extraction</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <div class="text-lg mb-2">
+            <svg class="w-6 h-6 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" /></svg>
+          </div>
+          <h4 class="font-bold text-sm">Compliance &amp; Policy Docs</h4>
+          <p class="text-xs text-slate-500 mt-1">Regulatory filings, policy documents, audit trails</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demo -->
   <section id="demo" class="py-24 section-fade">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-16">
         <span class="text-sm font-semibold text-skubbs-500 uppercase tracking-wider">Today's Agenda</span>
         <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Live Demonstration</h2>
-        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">We'll walk through the complete claims lifecycle end-to-end.</p>
+        <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg">We'll show you the API in action — from document upload to structured data extraction — integrated into a real app.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100/50 border border-purple-200 rounded-3xl p-8 relative overflow-hidden">
+          <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold w-8 h-8 rounded-full flex items-center justify-center">1</div>
+          <div class="absolute top-4 right-4">
+            <span class="text-[10px] font-bold text-purple-600 bg-purple-100 border border-purple-200 rounded-full px-2 py-0.5">Core</span>
+          </div>
+          <div class="w-16 h-16 bg-white/80 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <svg class="w-8 h-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3 text-purple-900 text-center">Live API Call</h3>
+          <ul class="text-sm text-purple-800/70 space-y-2">
+            <li>Send a real document to the API</li>
+            <li>See structured JSON response</li>
+            <li>Confidence scores per field</li>
+            <li>Multi-format (photo + PDF)</li>
+            <li>English &amp; Chinese documents</li>
+            <li>Interactive API documentation</li>
+          </ul>
+        </div>
+
         <div class="bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-200 rounded-3xl p-8 relative overflow-hidden">
-          <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold w-8 h-8 rounded-full flex items-center justify-center">1</div>
+          <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold w-8 h-8 rounded-full flex items-center justify-center">2</div>
+          <div class="absolute top-4 right-4">
+            <span class="text-[10px] font-bold text-blue-600 bg-blue-100 border border-blue-200 rounded-full px-2 py-0.5">Integration Demo</span>
+          </div>
           <div class="w-16 h-16 bg-white/80 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
             <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="7" y="2" width="10" height="20" rx="2" /><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2" /></svg>
           </div>
           <h3 class="text-lg font-bold mb-3 text-blue-900 text-center">Mobile App</h3>
+          <p class="text-xs text-blue-600 font-medium mb-3 text-center">Shows how easily the API integrates</p>
           <ul class="text-sm text-blue-800/70 space-y-2">
-            <li>Login &rarr; Claims module</li>
-            <li>Upload PDF claim document</li>
-            <li>Watch AI extract fields live</li>
+            <li>Upload claim → AI extracts fields</li>
             <li>Edit low-confidence fields</li>
-            <li>3-month date validation prompt</li>
-            <li>English &amp; Chinese demo</li>
-            <li>Submit claim</li>
-          </ul>
-        </div>
-
-        <div class="bg-gradient-to-br from-purple-50 to-purple-100/50 border border-purple-200 rounded-3xl p-8 relative overflow-hidden">
-          <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold w-8 h-8 rounded-full flex items-center justify-center">2</div>
-          <div class="w-16 h-16 bg-white/80 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
-            <svg class="w-8 h-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-3 text-purple-900 text-center">Backend &amp; API</h3>
-          <ul class="text-sm text-purple-800/70 space-y-2">
-            <li>Live API call with real document</li>
-            <li>Structured JSON response</li>
-            <li>Confidence scoring in action</li>
-            <li>Multi-format support (image + PDF)</li>
-            <li>Interactive API documentation</li>
-            <li>Integration readiness</li>
+            <li>3-month date validation</li>
+            <li>Submit for review</li>
           </ul>
         </div>
 
         <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200 rounded-3xl p-8 relative overflow-hidden">
           <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold w-8 h-8 rounded-full flex items-center justify-center">3</div>
+          <div class="absolute top-4 right-4">
+            <span class="text-[10px] font-bold text-emerald-600 bg-emerald-100 border border-emerald-200 rounded-full px-2 py-0.5">Integration Demo</span>
+          </div>
           <div class="w-16 h-16 bg-white/80 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
             <svg class="w-8 h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7" /></svg>
           </div>
           <h3 class="text-lg font-bold mb-3 text-emerald-900 text-center">Admin Portal</h3>
+          <p class="text-xs text-emerald-600 font-medium mb-3 text-center">Shows how extracted data flows to admin</p>
           <ul class="text-sm text-emerald-800/70 space-y-2">
-            <li>View submitted claims live</li>
-            <li>OCR-extracted data with confidence</li>
-            <li>Original vs corrected comparison</li>
+            <li>Claims appear in real-time</li>
+            <li>View original vs corrected data</li>
             <li>Approve / reject workflow</li>
             <li>AI assessment per claim</li>
-            <li>Search &amp; filter</li>
           </ul>
         </div>
+      </div>
+
+      <div class="mt-10 bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
+        <p class="text-sm text-slate-600"><strong class="text-slate-800">Note:</strong> The mobile app and admin portal are demo applications built by us to show integration in action. Your team would integrate the API into <strong>your own systems</strong> — the UX stays entirely yours.</p>
       </div>
     </div>
   </section>
@@ -591,23 +792,29 @@
         <h2 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Why Skubbs</h2>
       </div>
 
+      <!-- Key differentiator callout -->
+      <div class="bg-gradient-to-r from-skubbs-50 to-blue-50 border border-skubbs-200 rounded-3xl p-8 mb-8 text-center">
+        <h3 class="text-xl font-bold text-slate-800 mb-2">We Already Build IHP's Apps</h3>
+        <p class="text-slate-600 max-w-2xl mx-auto">Skubbs develops and maintains the IHP Mobile App and web portals like IHP Marketplace. We know your systems inside and out — integration will be seamless because <strong>we built the platforms this service plugs into</strong>.</p>
+      </div>
+
       <div class="grid md:grid-cols-2 gap-6">
         <div class="bg-white border border-slate-200 rounded-2xl p-6 flex gap-4">
           <div class="w-10 h-10 bg-skubbs-100 rounded-xl flex items-center justify-center shrink-0">
             <svg class="w-5 h-5 text-skubbs-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
           </div>
           <div>
-            <h4 class="font-bold">Built &amp; Ready</h4>
-            <p class="text-sm text-slate-500 mt-1">This isn't a concept — the platform is built and running. You're seeing a working product today, not slides.</p>
+            <h4 class="font-bold">Built &amp; Running</h4>
+            <p class="text-sm text-slate-500 mt-1">This isn't a concept — the API is live in production right now. You're seeing a working service today, not slides.</p>
           </div>
         </div>
         <div class="bg-white border border-slate-200 rounded-2xl p-6 flex gap-4">
           <div class="w-10 h-10 bg-skubbs-100 rounded-xl flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-skubbs-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>
+            <svg class="w-5 h-5 text-skubbs-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25" /></svg>
           </div>
           <div>
-            <h4 class="font-bold">Your Systems, Our Engine</h4>
-            <p class="text-sm text-slate-500 mt-1">We're an API-first platform. IHP keeps full control of the user experience — we power the intelligence behind it.</p>
+            <h4 class="font-bold">True Blackbox Service</h4>
+            <p class="text-sm text-slate-500 mt-1">Zero setup on your side. No AI models to manage, no infrastructure to maintain. Send a doc, get data back.</p>
           </div>
         </div>
         <div class="bg-white border border-slate-200 rounded-2xl p-6 flex gap-4">
@@ -616,16 +823,16 @@
           </div>
           <div>
             <h4 class="font-bold">Bilingual from Day One</h4>
-            <p class="text-sm text-slate-500 mt-1">English and Chinese claims handled natively. No separate models or extra cost — one engine, both languages.</p>
+            <p class="text-sm text-slate-500 mt-1">English and Chinese documents handled natively by the same engine. No extra cost, no separate config.</p>
           </div>
         </div>
         <div class="bg-white border border-slate-200 rounded-2xl p-6 flex gap-4">
           <div class="w-10 h-10 bg-skubbs-100 rounded-xl flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-skubbs-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+            <svg class="w-5 h-5 text-skubbs-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>
           </div>
           <div>
-            <h4 class="font-bold">Human-in-the-Loop</h4>
-            <p class="text-sm text-slate-500 mt-1">AI does the heavy lifting, but humans stay in control. Confidence scoring ensures nothing slips through unchecked.</p>
+            <h4 class="font-bold">Platform Agnostic</h4>
+            <p class="text-sm text-slate-500 mt-1">Works with any tech stack — iOS, Android, web, backend services. If it can make an HTTP call, it can use SkubbsVision.</p>
           </div>
         </div>
       </div>
@@ -638,8 +845,8 @@
       <div class="w-14 h-14 bg-skubbs-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
         <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
       </div>
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Transform Claims Processing Together</h2>
-      <p class="text-slate-400 text-lg mb-8">Skubbs Private Limited &times; Integrated Health Plans</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Document Intelligence, Delivered as a Service</h2>
+      <p class="text-slate-400 text-lg mb-8">Skubbs Private Limited</p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-slate-400">
         <div class="flex items-center gap-2">
@@ -653,7 +860,7 @@
       </div>
 
       <div class="mt-12 pt-8 border-t border-slate-800 text-xs text-slate-600">
-        &copy; 2026 Skubbs Private Limited. All rights reserved. &nbsp;|&nbsp; Confidential &mdash; Prepared for IHP Evaluation
+        &copy; 2026 Skubbs Private Limited. All rights reserved. &nbsp;|&nbsp; Confidential
       </div>
     </div>
   </section>

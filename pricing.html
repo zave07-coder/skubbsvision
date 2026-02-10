@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkubbsVision — Investment Summary</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            skubbs: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#4BA3E3', 600: '#2563eb', 700: '#1d4ed8' },
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #4BA3E3 0%, #2563eb 50%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glass { background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .glow-sm { box-shadow: 0 0 30px rgba(75,163,227,0.1); }
+    .section-fade { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .section-fade.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200/50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <div class="w-9 h-9 rounded-lg bg-skubbs-500 flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+          </div>
+          <span class="text-lg font-bold tracking-tight">Skubbs<span class="text-skubbs-500">Vision</span></span>
+        </a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-skubbs-500 transition-colors">&larr; Back to Overview</a>
+        <span class="text-xs font-semibold text-white bg-skubbs-500 rounded-full px-3 py-1">Feb 2026</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Investment Summary -->
+  <section class="pt-32 pb-24 bg-slate-950 text-white min-h-screen">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-sm font-semibold text-skubbs-400 uppercase tracking-wider">Investment</span>
+        <h1 class="text-4xl md:text-5xl font-bold mt-3 tracking-tight">Clear, Predictable Pricing</h1>
+        <p class="text-slate-400 mt-4 max-w-2xl mx-auto text-lg">One-time setup, transparent monthly costs, no surprises.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <!-- One-time -->
+        <div class="border border-slate-800 rounded-3xl p-8">
+          <div class="text-xs font-semibold text-skubbs-400 uppercase tracking-wider mb-4">One-Time Setup</div>
+          <div class="text-5xl font-black mb-2">$55,000</div>
+          <p class="text-slate-400 text-sm mb-6">AI Claims Platform Implementation</p>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>AI/OCR model setup &amp; training</li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>API development &amp; documentation</li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Integration support — Mobile App, Employee Portal, Claims Admin</li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>3 months post go-live support included</li>
+          </ul>
+        </div>
+
+        <!-- Monthly -->
+        <div class="border border-slate-800 rounded-3xl p-8">
+          <div class="text-xs font-semibold text-skubbs-400 uppercase tracking-wider mb-4">Monthly Operations</div>
+          <div class="text-5xl font-black mb-2">$3,950<span class="text-xl font-medium text-slate-400">/mo</span></div>
+          <p class="text-slate-400 text-sm mb-6">Running costs for up to 60,000 docs</p>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Document Processing (AI/OCR) — $2,500/mo</li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Platform Support &amp; SLA — $850/mo</li>
+            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Cloud Hosting &amp; Infrastructure — $600/mo</li>
+            <li class="flex items-start gap-3 text-slate-500"><svg class="w-5 h-5 text-slate-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>Overage: $0.05 per page beyond 60K</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Howden add-on -->
+      <div class="border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 mb-12">
+        <div>
+          <div class="text-xs font-semibold text-skubbs-400 uppercase tracking-wider mb-1">Add-On</div>
+          <h4 class="text-lg font-bold">Howden Mobile App Integration</h4>
+          <p class="text-sm text-slate-400">Custom integration with Howden's existing mobile infrastructure</p>
+        </div>
+        <div class="text-3xl font-black whitespace-nowrap">$40,000</div>
+      </div>
+
+      <!-- Cost per doc callout -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl px-8 py-4">
+          <span class="text-emerald-400 text-lg font-bold">Effective cost:</span>
+          <span class="text-3xl font-black text-white">~$0.066</span>
+          <span class="text-emerald-400 text-lg font-bold">per document</span>
+        </div>
+        <p class="text-slate-500 text-sm mt-3">At 60,000 documents/month ($3,950 &divide; 60,000)</p>
+      </div>
+
+      <!-- ROI comparison -->
+      <div class="border border-slate-800 rounded-3xl p-8 md:p-10">
+        <h3 class="text-xl font-bold mb-8 text-center">ROI at Scale</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="text-slate-400">Manual Processing (60K docs/mo)</span>
+              <span class="font-bold text-red-400">~5,000 staff hours</span>
+            </div>
+            <div class="h-4 bg-red-500/20 rounded-full overflow-hidden"><div class="h-full bg-red-500 rounded-full" style="width:100%"></div></div>
+            <div class="text-xs text-slate-500 mt-1">At ~5 min per document</div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="text-slate-400">With SkubbsVision</span>
+              <span class="font-bold text-emerald-400">~750 staff hours</span>
+            </div>
+            <div class="h-4 bg-emerald-500/20 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full" style="width:15%"></div></div>
+            <div class="text-xs text-slate-500 mt-1">85% reduction in manual processing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-16 text-center">
+        <a href="index.html" class="inline-flex items-center gap-2 text-skubbs-400 hover:text-skubbs-300 font-medium transition-colors">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+          Back to Overview
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="py-12 bg-slate-900 text-white border-t border-slate-800">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="text-xs text-slate-600">
+        &copy; 2026 Skubbs Private Limited. All rights reserved. &nbsp;|&nbsp; Confidential &mdash; Prepared for IHP Evaluation
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
