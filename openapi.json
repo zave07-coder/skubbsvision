@@ -5,7 +5,7 @@
         "description": "\n## OCR Claim Extraction API\n\nExtract structured data from receipt and claim documents using AI-powered OCR.\n\n### Authentication\nAll endpoints require an API key via the `X-API-Key` header.\n\n```\nX-API-Key: your-api-key-here\n```\n\n### Quick Start\n```bash\ncurl -X POST https://skb-claim-production.up.railway.app/api/v1/extract \\\n  -H \"X-API-Key: your-key\" \\\n  -F \"file=@receipt.jpg\"\n```\n",
         "version": "1.0.0",
         "x-logo": {
-            "url": "/static/logo.png",
+            "url": "logo.png",
             "altText": "SkubbsVision"
         }
     },
